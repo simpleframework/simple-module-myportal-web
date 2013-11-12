@@ -1,0 +1,56 @@
+#MyPortalPage_layout {
+  text-align: left;
+  margin: 0 4px;
+}
+
+#MyPortalPage_layout .portal_tb_tip {
+  margin-top: 6px;
+}
+
+.MyPortalPage {
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  height: 28px;
+  margin: 10px 8px 2px;
+  padding-top: 6px;
+  position: relative;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.MyPortalPage .right_bar {
+  position: absolute;
+  font-size: 9.5pt;
+  right: 15px;
+}
+
+.MyPortalPage .tabs_icon {
+  background: url("images/portal.png") 0 0 no-repeat transparent;
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: -6px;
+  left: 6px;
+}
+
+.MyPortalPage .tabs {
+  left: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+.MyPortalPage .addtab {
+  background: url(images/add.png) center left no-repeat;
+  margin-left: 6px;
+  padding-left: 18px;
+}
+
+.MyPortalPage .simple_tabs {
+  margin-bottom: -1px;
+}
+
+.MyPortalPage .simple_tabs,
+.MyPortalPage .addtab {
+  float: left;
+}
