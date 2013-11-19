@@ -21,7 +21,7 @@ import net.simpleframework.module.myportal.IPortalTabService;
 import net.simpleframework.module.myportal.LayoutLobBean;
 import net.simpleframework.module.myportal.PortalTabBean;
 import net.simpleframework.mvc.AbstractMVCPage;
-import net.simpleframework.mvc.LocalSessionCache;
+import net.simpleframework.mvc.SessionCache;
 import net.simpleframework.mvc.component.AbstractComponentRegistry;
 import net.simpleframework.mvc.component.ComponentParameter;
 import net.simpleframework.mvc.component.portal.ColumnBean;
@@ -49,7 +49,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 		}
 
 		final ID tabId = homeTab.getId();
-		ColumnCache columnCache = (ColumnCache) LocalSessionCache.get(tabId);
+		ColumnCache columnCache = (ColumnCache) SessionCache.lget(tabId);
 		if (columnCache != null) {
 			return columnCache;
 		}
@@ -66,7 +66,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 					.getComponentRegistry(PortalBean.class)).loadBean((PortalBean) cp.componentBean,
 					cp.getScriptEval(), doc.getRoot());
 			columnCache = new ColumnCache(doc, columns);
-			LocalSessionCache.put(tabId, columnCache);
+			SessionCache.lput(tabId, columnCache);
 		} catch (final IOException e) {
 			log.warn(e);
 		}
@@ -85,7 +85,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 
 		final ILayoutLobService service = context.getMyPortalService();
 		final LayoutLobBean homeLayout = service.getBean(tabId);
-		final ColumnCache columnCache = (ColumnCache) LocalSessionCache.get(tabId);
+		final ColumnCache columnCache = (ColumnCache) SessionCache.lget(tabId);
 		if (columnCache == null) {
 			return;
 		}
