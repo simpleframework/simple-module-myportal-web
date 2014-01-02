@@ -2,6 +2,7 @@ package net.simpleframework.module.myportal.web;
 
 import static net.simpleframework.common.I18n.$m;
 import net.simpleframework.ctx.Module;
+import net.simpleframework.ctx.ModuleFunctions;
 import net.simpleframework.module.myportal.impl.MyPortalContext;
 import net.simpleframework.module.myportal.web.page.MyPortalPage;
 import net.simpleframework.mvc.PageParameter;
@@ -17,17 +18,22 @@ import net.simpleframework.mvc.ctx.WebModuleFunction;
  */
 public class MyPortalWebContext extends MyPortalContext implements IMyPortalWebContext {
 
-	public static WebModuleFunction MY_PORTAL_FUNCTION = (WebModuleFunction) new WebModuleFunction(
-			MyPortalPage.class).setName(MODULE_NAME + "-MyPortalPage")
-			.setText($m("MyPortalContext.0")).setDisabled(true);
-
 	@Override
 	protected Module createModule() {
-		return super.createModule().setDefaultFunction(MY_PORTAL_FUNCTION);
+		return super.createModule().setDefaultFunction(FUNC_MY_PORTAL);
+	}
+
+	@Override
+	protected ModuleFunctions getFunctions() {
+		return ModuleFunctions.of(FUNC_MY_PORTAL);
 	}
 
 	@Override
 	public AbstractElement<?> toMyPortalElement(final PageParameter pp) {
-		return new LinkElement(MY_PORTAL_FUNCTION.getText()).setHref(MY_PORTAL_FUNCTION.getUrl());
+		return new LinkElement(FUNC_MY_PORTAL.getText()).setHref(FUNC_MY_PORTAL.getUrl());
 	}
+
+	public final WebModuleFunction FUNC_MY_PORTAL = (WebModuleFunction) new WebModuleFunction(
+			MyPortalPage.class).setName(MODULE_NAME + "-MyPortalPage")
+			.setText($m("MyPortalContext.0")).setDisabled(true);
 }
