@@ -38,8 +38,10 @@ import net.simpleframework.mvc.template.t2.T2TemplatePage;
 public class MyPortalPage extends T2TemplatePage implements IMyPortalContextAware {
 
 	@Override
-	protected void addComponents(final PageParameter pp) {
-		super.addComponents(pp);
+	protected void onForward(final PageParameter pp) {
+		super.onForward(pp);
+
+		pp.addImportCSS(MyPortalPage.class, "/my_portal.css");
 
 		addComponentBean(pp, PortalBean.class, MyPortalHandle.class).setContainerId(
 				"MyPortalPage_layout");
@@ -61,13 +63,6 @@ public class MyPortalPage extends T2TemplatePage implements IMyPortalContextAwar
 		menu.addItem(MenuItem.sep());
 		menu.addItem(MenuItem.itemDelete().setOnclick(
 				"$Actions['MyPortalPage_tabDelete']('tab_id=' + $Target(item).id.substring(1));"));
-	}
-
-	@Override
-	protected void addImportCSS(final PageParameter pp) {
-		super.addImportCSS(pp);
-
-		pp.addImportCSS(MyPortalPage.class, "/my_portal.css");
 	}
 
 	@Override
