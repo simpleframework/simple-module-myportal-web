@@ -52,7 +52,7 @@ public class PortalTabEditPage extends FormTableRowTemplatePage implements IMyPo
 
 	@Transaction(context = IMyPortalContext.class)
 	@Override
-	public JavascriptForward onSave(final ComponentParameter cp) {
+	public JavascriptForward onSave(final ComponentParameter cp) throws Exception {
 		final String tabText = cp.getParameter("tab_name");
 		final String description = cp.getParameter("tab_description");
 		final IPortalTabService service = context.getPortalTabService();
