@@ -14,6 +14,7 @@ import net.simpleframework.module.myportal.IPortalTabService;
 import net.simpleframework.module.myportal.PortalTabBean;
 import net.simpleframework.mvc.IForward;
 import net.simpleframework.mvc.JavascriptForward;
+import net.simpleframework.mvc.PageMapping;
 import net.simpleframework.mvc.PageParameter;
 import net.simpleframework.mvc.common.element.ETabMatch;
 import net.simpleframework.mvc.common.element.LinkElement;
@@ -35,6 +36,7 @@ import net.simpleframework.mvc.template.t2.T2TemplatePage;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
+@PageMapping(url = "/my/portal")
 public class MyPortalPage extends T2TemplatePage implements IMyPortalContextAware {
 
 	@Override
