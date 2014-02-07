@@ -95,7 +95,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 		columnCache.columns = columns;
 		for (final ColumnBean column : columns) {
 			column.syncElement();
-			root.add(column.getBeanElement());
+			root.addElement(column.getElement());
 		}
 		homeLayout.setLayoutLob(new StringReader(columnCache.document.toString()));
 		service.update(homeLayout);
