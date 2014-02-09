@@ -78,7 +78,7 @@ public class MyPortalPage extends T2TemplatePage implements IMyPortalContextAwar
 		final PortalTabBean homeTab = service.getBean(cp.getParameter("tab_id"));
 		final PortalTabBean firstHomeTab = service.homeTab(cp.getLoginId());
 		final JavascriptForward js = new JavascriptForward();
-		if (firstHomeTab.getId().equals(homeTab.getId())) {
+		if (firstHomeTab.equals(homeTab)) {
 			js.append("alert('").append($m("MyPortalPage.3")).append("');");
 		} else {
 			service.delete(homeTab.getId());
