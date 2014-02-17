@@ -5,7 +5,6 @@ import static net.simpleframework.common.I18n.$m;
 import java.io.IOException;
 import java.util.Map;
 
-import net.simpleframework.common.Convert;
 import net.simpleframework.ctx.permission.IPermissionConst;
 import net.simpleframework.ctx.trans.Transaction;
 import net.simpleframework.module.myportal.IMyPortalContext;
@@ -109,8 +108,8 @@ public class MyPortalPage extends T2TemplatePage implements IMyPortalContextAwar
 		final TabButtons btns = TabButtons.of();
 		for (final PortalTabBean homeTab : context.getPortalTabService().queryTabs(pp.getLoginId())) {
 			btns.add(new TabButton(homeTab.getTabText(), MyPortalHandle.getTabUrl(homeTab.getId()))
-					.setTabMatch(ETabMatch.params).setId(Convert.toString(homeTab.getId()))
-					.setMenuIcon(true).setTooltip(homeTab.getDescription()));
+					.setTabMatch(ETabMatch.params).setId(homeTab.getId().toString()).setMenuIcon(true)
+					.setTooltip(homeTab.getDescription()));
 		}
 		sb.append(btns.toString(pp));
 		sb.append("    <a class='addtab' onclick=\"$Actions['MyPortalPage_addTab']();\">")
