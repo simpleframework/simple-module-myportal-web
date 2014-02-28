@@ -53,7 +53,7 @@ public class MyPortalPage extends T2TemplatePage implements IMyPortalContextAwar
 				.setWidth(400);
 
 		addAjaxRequest(pp, "MyPortalPage_tabDelete").setConfirmMessage($m("MyPortalPage.1"))
-				.setHandleMethod("doTabDelete");
+				.setHandlerMethod("doTabDelete");
 
 		addComponentBean(pp, "MyPortalPage_tooltip", TooltipBean.class);
 
