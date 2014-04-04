@@ -4,7 +4,7 @@ import static net.simpleframework.common.I18n.$m;
 import net.simpleframework.ctx.Module;
 import net.simpleframework.ctx.ModuleFunctions;
 import net.simpleframework.module.myportal.impl.MyPortalContext;
-import net.simpleframework.module.myportal.web.page.MyPortalPage;
+import net.simpleframework.module.myportal.web.page.MyPortalTPage;
 import net.simpleframework.mvc.PageParameter;
 import net.simpleframework.mvc.common.element.AbstractElement;
 import net.simpleframework.mvc.common.element.LinkElement;
@@ -17,6 +17,10 @@ import net.simpleframework.mvc.ctx.WebModuleFunction;
  *         http://www.simpleframework.net
  */
 public class MyPortalWebContext extends MyPortalContext implements IMyPortalWebContext {
+	@Override
+	public MyPortalUrlsFactory getUrlsFactory() {
+		return singleton(MyPortalUrlsFactory.class);
+	}
 
 	@Override
 	protected Module createModule() {
@@ -33,7 +37,7 @@ public class MyPortalWebContext extends MyPortalContext implements IMyPortalWebC
 		return new LinkElement(FUNC_MY_PORTAL.getText()).setHref(FUNC_MY_PORTAL.getUrl());
 	}
 
-	public final WebModuleFunction FUNC_MY_PORTAL = (WebModuleFunction) new WebModuleFunction(
-			MyPortalPage.class).setName(MODULE_NAME + "-MyPortalPage")
-			.setText($m("MyPortalContext.0")).setDisabled(true);
+	public final WebModuleFunction FUNC_MY_PORTAL = (WebModuleFunction) new WebModuleFunction()
+			.setUrl(getUrlsFactory().getUrl(null, MyPortalTPage.class))
+			.setName(MODULE_NAME + "-MyPortalPage").setText($m("MyPortalContext.0")).setDisabled(true);
 }

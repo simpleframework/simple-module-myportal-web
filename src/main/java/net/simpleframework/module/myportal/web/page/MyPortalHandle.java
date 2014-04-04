@@ -20,7 +20,8 @@ import net.simpleframework.module.myportal.IMyPortalContextAware;
 import net.simpleframework.module.myportal.IPortalTabService;
 import net.simpleframework.module.myportal.LayoutLobBean;
 import net.simpleframework.module.myportal.PortalTabBean;
-import net.simpleframework.mvc.AbstractMVCPage;
+import net.simpleframework.module.myportal.web.IMyPortalWebContext;
+import net.simpleframework.mvc.PageParameter;
 import net.simpleframework.mvc.SessionCache;
 import net.simpleframework.mvc.component.AbstractComponentRegistry;
 import net.simpleframework.mvc.component.ComponentParameter;
@@ -143,10 +144,8 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 
 	static final String TAB_ID = "tabid";
 
-	public static String getTabUrl(final Object tabId) {
-		final StringBuilder sb = new StringBuilder();
-		sb.append(AbstractMVCPage.url(MyPortalPage.class)).append("?").append(TAB_ID).append("=")
-				.append(tabId);
-		return sb.toString();
+	public static String getTabUrl(final PageParameter pp, final Object tabId) {
+		return ((IMyPortalWebContext) context).getUrlsFactory().getUrl(pp, MyPortalTPage.class,
+				TAB_ID + "=" + tabId);
 	}
 }

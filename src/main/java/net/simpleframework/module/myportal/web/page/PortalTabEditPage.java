@@ -70,7 +70,7 @@ public class PortalTabEditPage extends FormTableRowTemplatePage implements IMyPo
 			service.update(tab);
 		}
 		final JavascriptForward js = super.onSave(cp);
-		js.append("$Actions.loc(\"").append(MyPortalHandle.getTabUrl(tab.getId())).append("\");");
+		js.append("$Actions.loc(\"").append(MyPortalHandle.getTabUrl(cp, tab.getId())).append("\");");
 		return js;
 	}
 

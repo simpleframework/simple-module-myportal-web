@@ -12,6 +12,8 @@ import net.simpleframework.mvc.common.element.AbstractElement;
  */
 public interface IMyPortalWebContext extends IMyPortalContext {
 
+	MyPortalUrlsFactory getUrlsFactory();
+
 	/**
 	 * 定义我的搜藏html元素
 	 * 

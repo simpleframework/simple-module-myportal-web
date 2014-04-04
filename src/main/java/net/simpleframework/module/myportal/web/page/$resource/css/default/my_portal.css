@@ -1,13 +1,13 @@
-#MyPortalPage_layout {
+#MyPortalTPage_layout {
   text-align: left;
   margin: 0 4px;
 }
 
-#MyPortalPage_layout .portal_tb_tip {
+#MyPortalTPage_layout .portal_tb_tip {
   margin-top: 6px;
 }
 
-.MyPortalPage {
+.MyPortalTPage {
   background-color: #fdfdfd;
   border: 1px solid #ccc;
   height: 28px;
@@ -19,38 +19,38 @@
   border-radius: 6px;
 }
 
-.MyPortalPage .right_bar {
+.MyPortalTPage .right_bar {
   position: absolute;
-  font-size: 9.5pt;
   right: 15px;
+  font-size: 9.5pt;
 }
 
-.MyPortalPage .tabs_icon {
+.MyPortalTPage .tabs_icon {
   background: url("images/portal.png") 0 0 no-repeat transparent;
-  height: 32px;
-  width: 32px;
   position: absolute;
   top: -6px;
   left: 6px;
+  height: 32px;
+  width: 32px;
 }
 
-.MyPortalPage .tabs {
+.MyPortalTPage .tabs {
   left: 40px;
   position: absolute;
   bottom: 0;
 }
 
-.MyPortalPage .addtab {
+.MyPortalTPage .addtab {
   background: url(images/add.png) center left no-repeat;
   margin-left: 6px;
   padding-left: 18px;
 }
 
-.MyPortalPage .simple_tabs {
+.MyPortalTPage .simple_tabs {
   margin-bottom: -1px;
 }
 
-.MyPortalPage .simple_tabs,
-.MyPortalPage .addtab {
+.MyPortalTPage .simple_tabs,
+.MyPortalTPage .addtab {
   float: left;
 }
