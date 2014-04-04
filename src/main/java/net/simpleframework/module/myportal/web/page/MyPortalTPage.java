@@ -37,7 +37,7 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 	protected void onForward(final PageParameter pp) {
 		super.onForward(pp);
 
-		pp.addImportCSS(MyPortalTPage.class, "/my_portal.css");
+		pp.addImportCSS(MyPortalTPage.class, "/myportal.css");
 
 		addComponentBean(pp, PortalBean.class, MyPortalHandle.class).setContainerId(
 				"MyPortalTPage_layout");
