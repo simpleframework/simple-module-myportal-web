@@ -63,7 +63,7 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 
 	@Transaction(context = IMyPortalContext.class)
 	public IForward doTabDelete(final ComponentParameter cp) {
-		final IPortalTabService service = context.getPortalTabService();
+		final IPortalTabService service = myPortalContext.getPortalTabService();
 		final PortalTabBean homeTab = service.getBean(cp.getParameter("tab_id"));
 		final PortalTabBean firstHomeTab = service.homeTab(cp.getLoginId());
 		final JavascriptForward js = new JavascriptForward();
@@ -90,7 +90,7 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 		sb.append("  <div class='tabs_icon'></div>");
 		sb.append("  <div class='tabs'>");
 		final TabButtons btns = TabButtons.of();
-		for (final PortalTabBean homeTab : context.getPortalTabService().queryTabs(pp.getLoginId())) {
+		for (final PortalTabBean homeTab : myPortalContext.getPortalTabService().queryTabs(pp.getLoginId())) {
 			btns.add(new TabButton(homeTab.getTabText(), MyPortalHandle.getTabUrl(pp, homeTab.getId()))
 					.setTabMatch(ETabMatch.params).setId(homeTab.getId().toString()).setMenuIcon(true)
 					.setTooltip(homeTab.getDescription()));

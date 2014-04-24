@@ -55,7 +55,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 			return columnCache;
 		}
 
-		final LayoutLobBean homeLayout = context.getMyPortalService().getBean(tabId);
+		final LayoutLobBean homeLayout = myPortalContext.getMyPortalService().getBean(tabId);
 		if (homeLayout == null) {
 			return null;
 		}
@@ -84,7 +84,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 		}
 		final ID tabId = homeTab.getId();
 
-		final ILayoutLobService service = context.getMyPortalService();
+		final ILayoutLobService service = myPortalContext.getMyPortalService();
 		final LayoutLobBean homeLayout = service.getBean(tabId);
 		final ColumnCache columnCache = (ColumnCache) SessionCache.lget(tabId);
 		if (columnCache == null) {
@@ -104,7 +104,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 
 	private PortalTabBean getHomeTab(final ComponentParameter cp) {
 		final String tabId = cp.getParameter(TAB_ID);
-		final IPortalTabService service = context.getPortalTabService();
+		final IPortalTabService service = myPortalContext.getPortalTabService();
 		PortalTabBean homeTab = service.getBean(tabId);
 		if (homeTab == null) {
 			homeTab = service.homeTab(cp.getLoginId());
@@ -145,7 +145,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 	static final String TAB_ID = "tabid";
 
 	public static String getTabUrl(final PageParameter pp, final Object tabId) {
-		return ((IMyPortalWebContext) context).getUrlsFactory().getUrl(pp, MyPortalTPage.class,
+		return ((IMyPortalWebContext) myPortalContext).getUrlsFactory().getUrl(pp, MyPortalTPage.class,
 				TAB_ID + "=" + tabId);
 	}
 }
