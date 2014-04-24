@@ -145,7 +145,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 	static final String TAB_ID = "tabid";
 
 	public static String getTabUrl(final PageParameter pp, final Object tabId) {
-		return ((IMyPortalWebContext) myPortalContext).getUrlsFactory().getUrl(pp, MyPortalTPage.class,
-				TAB_ID + "=" + tabId);
+		return ((IMyPortalWebContext) myPortalContext).getUrlsFactory().getUrl(pp,
+				MyPortalTPage.class, TAB_ID + "=" + tabId);
 	}
 }

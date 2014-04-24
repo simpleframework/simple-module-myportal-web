@@ -90,7 +90,8 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 		sb.append("  <div class='tabs_icon'></div>");
 		sb.append("  <div class='tabs'>");
 		final TabButtons btns = TabButtons.of();
-		for (final PortalTabBean homeTab : myPortalContext.getPortalTabService().queryTabs(pp.getLoginId())) {
+		for (final PortalTabBean homeTab : myPortalContext.getPortalTabService().queryTabs(
+				pp.getLoginId())) {
 			btns.add(new TabButton(homeTab.getTabText(), MyPortalHandle.getTabUrl(pp, homeTab.getId()))
 					.setTabMatch(ETabMatch.params).setId(homeTab.getId().toString()).setMenuIcon(true)
 					.setTooltip(homeTab.getDescription()));

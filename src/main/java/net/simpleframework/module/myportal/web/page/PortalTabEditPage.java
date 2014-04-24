@@ -41,8 +41,8 @@ public class PortalTabEditPage extends FormTableRowTemplatePage implements IMyPo
 	@Override
 	public void onLoad(final PageParameter pp, final Map<String, Object> dataBinding,
 			final PageSelector selector) {
-		final PortalTabBean homeTab = myPortalContext.getPortalTabService()
-				.getBean(pp.getParameter("tab_id"));
+		final PortalTabBean homeTab = myPortalContext.getPortalTabService().getBean(
+				pp.getParameter("tab_id"));
 		if (homeTab != null) {
 			dataBinding.put("tab_id", homeTab.getId());
 			dataBinding.put("tab_name", homeTab.getTabText());
