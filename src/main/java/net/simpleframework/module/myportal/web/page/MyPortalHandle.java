@@ -69,7 +69,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 			columnCache = new ColumnCache(doc, columns);
 			SessionCache.lput(tabId, columnCache);
 		} catch (final IOException e) {
-			log.warn(e);
+			getLog().warn(e);
 		}
 		return columnCache;
 	}
