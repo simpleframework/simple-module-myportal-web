@@ -55,12 +55,9 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 			return columnCache;
 		}
 
-		final LayoutLobBean homeLayout = myPortalContext.getMyPortalService().getBean(tabId);
-		if (homeLayout == null) {
-			return null;
-		}
-
 		try {
+			final LayoutLobBean homeLayout = myPortalContext.getLayoutLobService().getLayoutLob(
+					homeTab);
 			final XmlDocument doc = new XmlDocument(IoUtils.getStringFromReader(homeLayout
 					.getLayoutLob()));
 			final List<ColumnBean> columns = ((PortalRegistry) AbstractComponentRegistry
@@ -84,7 +81,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 		}
 		final ID tabId = homeTab.getId();
 
-		final ILayoutLobService service = myPortalContext.getMyPortalService();
+		final ILayoutLobService service = myPortalContext.getLayoutLobService();
 		final LayoutLobBean homeLayout = service.getBean(tabId);
 		final ColumnCache columnCache = (ColumnCache) SessionCache.lget(tabId);
 		if (columnCache == null) {
