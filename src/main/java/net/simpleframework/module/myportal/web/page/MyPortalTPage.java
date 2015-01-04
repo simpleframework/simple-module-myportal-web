@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.Map;
 
 import net.simpleframework.ctx.trans.Transaction;
+import net.simpleframework.module.myportal.ILayoutTabService;
 import net.simpleframework.module.myportal.IMyPortalContext;
 import net.simpleframework.module.myportal.IMyPortalContextAware;
-import net.simpleframework.module.myportal.IPortalTabService;
-import net.simpleframework.module.myportal.PortalTabBean;
+import net.simpleframework.module.myportal.LayoutTabBean;
 import net.simpleframework.mvc.IForward;
 import net.simpleframework.mvc.JavascriptForward;
 import net.simpleframework.mvc.PageParameter;
@@ -63,9 +63,9 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 
 	@Transaction(context = IMyPortalContext.class)
 	public IForward doTabDelete(final ComponentParameter cp) {
-		final IPortalTabService service = myPortalContext.getPortalTabService();
-		final PortalTabBean homeTab = service.getBean(cp.getParameter("tab_id"));
-		final PortalTabBean firstHomeTab = service.homeTab(cp.getLoginId());
+		final ILayoutTabService service = myPortalContext.getLayoutTabService();
+		final LayoutTabBean homeTab = service.getBean(cp.getParameter("tab_id"));
+		final LayoutTabBean firstHomeTab = service.homeTab(cp.getLoginId());
 		final JavascriptForward js = new JavascriptForward();
 		if (firstHomeTab.equals(homeTab)) {
 			js.append("alert('").append($m("MyPortalTPage.3")).append("');");
@@ -90,7 +90,7 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 		sb.append("  <div class='tabs_icon'></div>");
 		sb.append("  <div class='tabs'>");
 		final TabButtons btns = TabButtons.of();
-		for (final PortalTabBean homeTab : myPortalContext.getPortalTabService().queryTabs(
+		for (final LayoutTabBean homeTab : myPortalContext.getLayoutTabService().queryTabs(
 				pp.getLoginId())) {
 			btns.add(new TabButton(homeTab.getTabText(), MyPortalHandle.getTabUrl(pp, homeTab.getId()))
 					.setTabMatch(ETabMatch.params).setId(homeTab.getId().toString()).setMenuIcon(true)
