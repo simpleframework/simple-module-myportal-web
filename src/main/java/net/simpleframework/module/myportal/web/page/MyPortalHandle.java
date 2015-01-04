@@ -15,11 +15,11 @@ import net.simpleframework.ctx.common.xml.XmlElement;
 import net.simpleframework.ctx.permission.IPermissionConst;
 import net.simpleframework.ctx.trans.Transaction;
 import net.simpleframework.module.myportal.ILayoutLobService;
-import net.simpleframework.module.myportal.ILayoutTabService;
 import net.simpleframework.module.myportal.IMyPortalContext;
 import net.simpleframework.module.myportal.IMyPortalContextAware;
+import net.simpleframework.module.myportal.ITabService;
 import net.simpleframework.module.myportal.LayoutLobBean;
-import net.simpleframework.module.myportal.LayoutTabBean;
+import net.simpleframework.module.myportal.TabBean;
 import net.simpleframework.module.myportal.web.IMyPortalWebContext;
 import net.simpleframework.mvc.PageParameter;
 import net.simpleframework.mvc.SessionCache;
@@ -44,7 +44,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 		return columnCache != null ? columnCache.columns : null;
 	}
 
-	protected ColumnCache getColumnCache(final ComponentParameter cp, final LayoutTabBean homeTab) {
+	protected ColumnCache getColumnCache(final ComponentParameter cp, final TabBean homeTab) {
 		if (homeTab == null) {
 			return null;
 		}
@@ -75,7 +75,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 	@Override
 	public void updatePortal(final ComponentParameter cp, final Collection<ColumnBean> columns,
 			final boolean draggable) {
-		final LayoutTabBean homeTab = getHomeTab(cp);
+		final TabBean homeTab = getHomeTab(cp);
 		if (homeTab == null) {
 			return;
 		}
@@ -99,10 +99,10 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 		service.update(homeLayout);
 	}
 
-	private LayoutTabBean getHomeTab(final ComponentParameter cp) {
+	private TabBean getHomeTab(final ComponentParameter cp) {
 		final String tabId = cp.getParameter(TAB_ID);
-		final ILayoutTabService service = myPortalContext.getLayoutTabService();
-		LayoutTabBean homeTab = service.getBean(tabId);
+		final ITabService service = myPortalContext.getTabService();
+		TabBean homeTab = service.getBean(tabId);
 		if (homeTab == null) {
 			homeTab = service.homeTab(cp.getLoginId());
 		}

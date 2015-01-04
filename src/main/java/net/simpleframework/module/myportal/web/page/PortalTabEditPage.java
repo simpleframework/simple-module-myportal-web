@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.Map;
 
 import net.simpleframework.ctx.trans.Transaction;
-import net.simpleframework.module.myportal.ILayoutTabService;
 import net.simpleframework.module.myportal.IMyPortalContext;
 import net.simpleframework.module.myportal.IMyPortalContextAware;
-import net.simpleframework.module.myportal.LayoutTabBean;
+import net.simpleframework.module.myportal.ITabService;
+import net.simpleframework.module.myportal.TabBean;
 import net.simpleframework.mvc.IPageHandler.PageSelector;
 import net.simpleframework.mvc.JavascriptForward;
 import net.simpleframework.mvc.PageParameter;
@@ -41,8 +41,7 @@ public class PortalTabEditPage extends FormTableRowTemplatePage implements IMyPo
 	@Override
 	public void onLoad(final PageParameter pp, final Map<String, Object> dataBinding,
 			final PageSelector selector) {
-		final LayoutTabBean homeTab = myPortalContext.getLayoutTabService().getBean(
-				pp.getParameter("tab_id"));
+		final TabBean homeTab = myPortalContext.getTabService().getBean(pp.getParameter("tab_id"));
 		if (homeTab != null) {
 			dataBinding.put("tab_id", homeTab.getId());
 			dataBinding.put("tab_name", homeTab.getTabText());
@@ -55,8 +54,8 @@ public class PortalTabEditPage extends FormTableRowTemplatePage implements IMyPo
 	public JavascriptForward onSave(final ComponentParameter cp) throws Exception {
 		final String tabText = cp.getParameter("tab_name");
 		final String description = cp.getParameter("tab_description");
-		final ILayoutTabService service = myPortalContext.getLayoutTabService();
-		LayoutTabBean tab = service.getBean(cp.getParameter("tab_id"));
+		final ITabService service = myPortalContext.getTabService();
+		TabBean tab = service.getBean(cp.getParameter("tab_id"));
 		if (tab == null) {
 			tab = service.createBean();
 			tab.setUserId(cp.getLoginId());
