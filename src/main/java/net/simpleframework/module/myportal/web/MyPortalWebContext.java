@@ -37,7 +37,7 @@ public class MyPortalWebContext extends MyPortalContext implements IMyPortalWebC
 		return new LinkElement(FUNC_MY_PORTAL.getText()).setHref(FUNC_MY_PORTAL.getUrl());
 	}
 
-	public final WebModuleFunction FUNC_MY_PORTAL = (WebModuleFunction) new WebModuleFunction()
+	public final WebModuleFunction FUNC_MY_PORTAL = (WebModuleFunction) new WebModuleFunction(this)
 			.setUrl(getUrlsFactory().getUrl(null, MyPortalTPage.class))
 			.setName(MODULE_NAME + "-MyPortalPage").setText($m("MyPortalContext.0")).setDisabled(true);
 }
