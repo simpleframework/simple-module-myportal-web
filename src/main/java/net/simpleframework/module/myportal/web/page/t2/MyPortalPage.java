@@ -5,7 +5,7 @@ import static net.simpleframework.common.I18n.$m;
 import java.io.IOException;
 import java.util.Map;
 
-import net.simpleframework.ctx.permission.IPermissionConst;
+import net.simpleframework.module.myportal.IMyPortalContextAware;
 import net.simpleframework.module.myportal.web.page.MyPortalTPage;
 import net.simpleframework.mvc.PageMapping;
 import net.simpleframework.mvc.PageParameter;
@@ -20,17 +20,12 @@ import net.simpleframework.mvc.template.t2.T2TemplatePage;
  *         http://www.simpleframework.net
  */
 @PageMapping(url = "/my/portal")
-public class MyPortalPage extends T2TemplatePage {
+public class MyPortalPage extends T2TemplatePage implements IMyPortalContextAware {
 
 	@Override
 	protected String toHtml(final PageParameter pp, final Map<String, Object> variables,
 			final String currentVariable) throws IOException {
 		return pp.includeUrl(MyPortalTPage.class);
-	}
-
-	@Override
-	public String getRole(final PageParameter pp) {
-		return IPermissionConst.ROLE_ALL_ACCOUNT;
 	}
 
 	@Override
