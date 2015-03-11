@@ -12,7 +12,7 @@ import net.simpleframework.common.IoUtils;
 import net.simpleframework.common.coll.KVMap;
 import net.simpleframework.ctx.common.xml.XmlDocument;
 import net.simpleframework.ctx.common.xml.XmlElement;
-import net.simpleframework.ctx.permission.IPermissionConst;
+import net.simpleframework.ctx.permission.PermissionConst;
 import net.simpleframework.ctx.trans.Transaction;
 import net.simpleframework.module.myportal.ILayoutLobService;
 import net.simpleframework.module.myportal.IMyPortalContext;
@@ -123,7 +123,7 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 	@Override
 	public Object getBeanProperty(final ComponentParameter cp, final String beanProperty) {
 		if ("roleManager".equals(beanProperty)) {
-			return IPermissionConst.ROLE_ALL_ACCOUNT;
+			return PermissionConst.ROLE_ALL_ACCOUNT;
 		} else if ("draggable".equals(beanProperty)) {
 			final ColumnCache columnCache = getColumnCache(cp, getHomeTab(cp));
 			if (columnCache == null) {
