@@ -22,7 +22,6 @@ import net.simpleframework.mvc.component.ui.menu.EMenuEvent;
 import net.simpleframework.mvc.component.ui.menu.MenuBean;
 import net.simpleframework.mvc.component.ui.menu.MenuItem;
 import net.simpleframework.mvc.component.ui.tooltip.TooltipBean;
-import net.simpleframework.mvc.component.ui.window.WindowBean;
 import net.simpleframework.mvc.template.AbstractTemplatePage;
 
 /**
@@ -43,9 +42,8 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 				"MyPortalTPage_layout");
 
 		addAjaxRequest(pp, "MyPortalTPage_tabPage", PortalTabEditPage.class);
-		addComponentBean(pp, "MyPortalTPage_addTab", WindowBean.class)
-				.setContentRef("MyPortalTPage_tabPage").setTitle($m("MyPortalTPage.0")).setHeight(250)
-				.setWidth(400);
+		addWindowBean(pp, "MyPortalTPage_addTab").setContentRef("MyPortalTPage_tabPage")
+				.setTitle($m("MyPortalTPage.0")).setHeight(250).setWidth(400);
 
 		addAjaxRequest(pp, "MyPortalTPage_tabDelete").setConfirmMessage($m("MyPortalTPage.1"))
 				.setHandlerMethod("doTabDelete");
