@@ -31,7 +31,7 @@ import net.simpleframework.mvc.template.lets.FormTableRowTemplatePage;
 public class PortalTabEditPage extends FormTableRowTemplatePage implements IMyPortalContextAware {
 
 	@Override
-	protected void onForward(final PageParameter pp) {
+	protected void onForward(final PageParameter pp) throws Exception {
 		super.onForward(pp);
 
 		addFormValidationBean(pp).addValidators(

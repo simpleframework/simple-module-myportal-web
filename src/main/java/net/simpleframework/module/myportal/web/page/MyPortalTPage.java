@@ -33,7 +33,7 @@ import net.simpleframework.mvc.template.AbstractTemplatePage;
 public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalContextAware {
 
 	@Override
-	protected void onForward(final PageParameter pp) {
+	protected void onForward(final PageParameter pp) throws Exception {
 		super.onForward(pp);
 
 		pp.addImportCSS(MyPortalTPage.class, "/myportal.css");
