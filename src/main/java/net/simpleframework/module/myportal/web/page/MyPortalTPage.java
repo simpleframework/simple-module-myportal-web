@@ -14,6 +14,7 @@ import net.simpleframework.mvc.IForward;
 import net.simpleframework.mvc.JavascriptForward;
 import net.simpleframework.mvc.PageParameter;
 import net.simpleframework.mvc.common.element.ETabMatch;
+import net.simpleframework.mvc.common.element.JS;
 import net.simpleframework.mvc.common.element.TabButton;
 import net.simpleframework.mvc.common.element.TabButtons;
 import net.simpleframework.mvc.component.ComponentParameter;
@@ -69,8 +70,7 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 			js.append("alert('").append($m("MyPortalTPage.3")).append("');");
 		} else {
 			service.delete(homeTab.getId());
-			js.append("$Actions.loc(\"");
-			js.append(MyPortalHandle.getTabUrl(cp, homeTab.getId())).append("\");");
+			js.append(JS.loc(MyPortalHandle.getTabUrl(cp, homeTab.getId())));
 		}
 		return js;
 	}

@@ -14,6 +14,7 @@ import net.simpleframework.mvc.IPageHandler.PageSelector;
 import net.simpleframework.mvc.JavascriptForward;
 import net.simpleframework.mvc.PageParameter;
 import net.simpleframework.mvc.common.element.InputElement;
+import net.simpleframework.mvc.common.element.JS;
 import net.simpleframework.mvc.common.element.RowField;
 import net.simpleframework.mvc.common.element.TableRow;
 import net.simpleframework.mvc.common.element.TableRows;
@@ -69,7 +70,7 @@ public class PortalTabEditPage extends FormTableRowTemplatePage implements IMyPo
 			service.update(tab);
 		}
 		final JavascriptForward js = super.onSave(cp);
-		js.append("$Actions.loc(\"").append(MyPortalHandle.getTabUrl(cp, tab.getId())).append("\");");
+		js.append(JS.loc(MyPortalHandle.getTabUrl(cp, tab.getId())));
 		return js;
 	}
 
