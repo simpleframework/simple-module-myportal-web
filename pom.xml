@@ -14,19 +14,16 @@
     <dependency>
       <groupId>net.simpleframework</groupId>
       <artifactId>simple-module-myportal-service</artifactId>
-      <version>${simple.module.myportal.service}</version>
     </dependency>
 
     <dependency>
       <groupId>net.simpleframework</groupId>
       <artifactId>simple-mvc-template</artifactId>
-      <version>${simple.mvc.template}</version>
     </dependency>
 
     <dependency>
       <groupId>net.simpleframework</groupId>
       <artifactId>simple-portal</artifactId>
-      <version>${simple.portal}</version>
     </dependency>
 
     <!-- web容器包 -->
