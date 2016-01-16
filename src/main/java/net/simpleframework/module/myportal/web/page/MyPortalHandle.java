@@ -56,13 +56,13 @@ public class MyPortalHandle extends DefaultPortalHandler implements IMyPortalCon
 		}
 
 		try {
-			final LayoutLobBean homeLayout = myPortalContext.getLayoutLobService().getLayoutLob(
-					homeTab);
-			final XmlDocument doc = new XmlDocument(IoUtils.getStringFromReader(homeLayout
-					.getLayoutLob()));
+			final LayoutLobBean homeLayout = myPortalContext.getLayoutLobService()
+					.getLayoutLob(homeTab);
+			final XmlDocument doc = new XmlDocument(
+					IoUtils.getStringFromReader(homeLayout.getLayoutLob()));
 			final List<ColumnBean> columns = ((PortalRegistry) AbstractComponentRegistry
 					.getComponentRegistry(PortalBean.class)).loadBean((PortalBean) cp.componentBean,
-					cp.getScriptEval(), doc.getRoot());
+							cp.getScriptEval(), doc.getRoot());
 			columnCache = new ColumnCache(doc, columns);
 			SessionCache.lput(tabId, columnCache);
 		} catch (final IOException e) {

@@ -1,6 +1,7 @@
 package net.simpleframework.module.myportal.web;
 
 import static net.simpleframework.common.I18n.$m;
+
 import net.simpleframework.ctx.ModuleFunctions;
 import net.simpleframework.module.myportal.impl.MyPortalContext;
 import net.simpleframework.module.myportal.web.page.MyPortalTPage;
@@ -31,8 +32,8 @@ public class MyPortalWebContext extends MyPortalContext implements IMyPortalWebC
 
 	@Override
 	public AbstractElement<?> toMyPortalElement(final PageParameter pp) {
-		final WebModuleFunction f = (WebModuleFunction) getFunctionByName(MODULE_NAME
-				+ "-MyPortalPage");
+		final WebModuleFunction f = (WebModuleFunction) getFunctionByName(
+				MODULE_NAME + "-MyPortalPage");
 		return new LinkElement(f.getText()).setHref(f.getUrl());
 	}
 

@@ -39,8 +39,8 @@ public class MyPortalTPage extends AbstractTemplatePage implements IMyPortalCont
 
 		pp.addImportCSS(MyPortalTPage.class, "/myportal.css");
 
-		addComponentBean(pp, PortalBean.class, MyPortalHandle.class).setContainerId(
-				"MyPortalTPage_layout");
+		addComponentBean(pp, PortalBean.class, MyPortalHandle.class)
+				.setContainerId("MyPortalTPage_layout");
 
 		addAjaxRequest(pp, "MyPortalTPage_tabPage", PortalTabEditPage.class);
 		addWindowBean(pp, "MyPortalTPage_addTab").setContentRef("MyPortalTPage_tabPage")
